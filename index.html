@@ -1,18 +1,500 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
+
 <meta charset="UTF-8">
-<title>Untuk Dinda ❤️</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Untuk Dinda 🩵</title>
+
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+
+body{
+
+height:100vh;
+
+overflow:hidden;
+
+font-family:Arial,sans-serif;
+
+background:linear-gradient(
+180deg,
+#69b8ff,
+#bce9ff
+);
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+}
+
+
+
+.sky{
+
+position:fixed;
+
+width:100%;
+
+height:100%;
+
+overflow:hidden;
+
+}
+
+
+
+.cloud{
+
+position:absolute;
+
+font-size:70px;
+
+animation:move 40s linear infinite;
+
+}
+
+
+.cloud:nth-child(1){
+
+top:10%;
+
+left:-200px;
+
+}
+
+
+.cloud:nth-child(2){
+
+top:40%;
+
+left:-300px;
+
+animation-duration:50s;
+
+}
+
+
+.cloud:nth-child(3){
+
+top:70%;
+
+left:-250px;
+
+animation-duration:35s;
+
+}
+
+
+@keyframes move{
+
+from{
+
+transform:translateX(0);
+
+}
+
+to{
+
+transform:translateX(1600px);
+
+}
+
+}
+
+
+
+.star{
+
+position:absolute;
+
+background:white;
+
+border-radius:50%;
+
+}
+
+
+
+.card{
+
+position:relative;
+
+z-index:5;
+
+width:90%;
+
+max-width:420px;
+
+background:white;
+
+padding:30px;
+
+border-radius:30px;
+
+text-align:center;
+
+box-shadow:0 15px 35px rgba(0,0,0,.2);
+
+}
+
+
+
+h1{
+
+color:#4b95ff;
+
+font-size:35px;
+
+margin-bottom:20px;
+
+}
+
+
+
+#message{
+
+font-size:20px;
+
+line-height:1.7;
+
+color:#555;
+
+min-height:150px;
+
+}
+
+
+
+button{
+
+margin-top:20px;
+
+padding:15px 35px;
+
+border:none;
+
+border-radius:50px;
+
+background:#4fa8ff;
+
+color:white;
+
+font-size:18px;
+
+font-weight:bold;
+
+}
+
+
+
+.music{
+
+position:absolute;
+
+right:20px;
+
+top:20px;
+
+z-index:10;
+
+background:white;
+
+width:55px;
+
+height:55px;
+
+border-radius:50%;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:25px;
+
+}
+
+
+
+.footer{
+
+margin-top:15px;
+
+font-size:13px;
+
+color:#777;
+
+}
+
+
+
+</style>
+
 </head>
 
+
 <body>
+  <div class="sky">
+
+<div class="cloud">☁️</div>
+<div class="cloud">☁️</div>
+<div class="cloud">☁️</div>
+
+
+</div>
+
+
+<div class="music" onclick="playMusic()">
+
+🎵
+
+</div>
+
+
+
+<div class="card">
+
+
+<h1>
+
+Hai Sayang 🩵
+
+</h1>
+
+
+
+<div id="message">
+
+Aku punya hadiah kecil buat kamuu...🥺🩵
+
+<br><br>
+
+Pencet tombol di bawah yaa...
+
+</div>
+
+
+
+<button onclick="nextMessage()">
+
+🎁 Buka Hadiah
+
+</button>
+
+
+
+<div class="footer">
+
+Made with 🩵 by Ryan
+
+</div>
+
+
+</div>
+
+
+
+<audio id="bgm" loop>
+
+<source src="music.mp3" type="audio/mpeg">
+
+</audio>
+
+
+
 
 <script>
-alert("Hai Dinda ❤️\n\nSelamat datang di web kecil yang aku buat khusus buat kamu.\nSemoga kamu selalu bahagia yaa. 🤍");
+
+
+const messages=[
+
+"HI MANISKU 🩵🩵",
+
+"Jangan mayah terus yaa sayangg...🥺🩵<br><br>Aku selalu ada buat kamu",
+
+"Maaf yaa kalau kemarin aku bikin kamu sedih...😔🩵<br><br>Aku sayang banget sama kamu",
+
+"Love you banyak banyak buat kesayanganku 🩵🩵🩵",
+
+"Aku buat ini khusus buat kamu...🥺<br><br>Semoga kamu suka 🤍",
+
+"Semoga harimu menyenangkan yaa sayangg...🩵<br><br>Semangat terus yaa 🤍"
+
+];
+
+
+let index=0;
+
+
+
+function playMusic(){
+
+let music=document.getElementById("bgm");
+
+music.play().catch(()=>{});
+
+}
+
+
+
+function nextMessage(){
+
+
+if(index < messages.length){
+
+
+document.getElementById("message").innerHTML = messages[index];
+
+
+index++;
+
+
+}
+
+else{
+
+
+showEnding();
+
+
+}
+
+
+
+}
+
+
+
+for(let i=0;i<50;i++){
+
+
+let s=document.createElement("div");
+
+
+s.className="star";
+
+
+s.style.width="3px";
+
+s.style.height="3px";
+
+s.style.left=Math.random()*100+"vw";
+
+s.style.top=Math.random()*100+"vh";
+
+
+document.querySelector(".sky").appendChild(s);
+
+
+}
+function showEnding(){
+
+document.querySelector(".card").innerHTML = `
+
+<h1>
+
+I LOVE YOU 🩵
+
+</h1>
+
+
+<div id="message">
+
+Terima kasih yaa sayangg...🥹🩵
+
+<br><br>
+
+Semoga kamu selalu bahagia...
+
+<br><br>
+
+Aku bakal selalu sayang sama kamu 🤍
+
+</div>
+
+
+
+<button onclick="hug()">
+
+🤗 Peluk Virtual
+
+</button>
+
+
+
+<div class="footer">
+
+Forever with Dinda 🩵
+
+</div>
+
+
+`;
+
+}
+
+
+
+
+function hug(){
+
+
+let heart=document.createElement("div");
+
+
+heart.innerHTML="🩵";
+
+
+heart.style.position="fixed";
+
+heart.style.left="50%";
+
+heart.style.top="50%";
+
+heart.style.transform="translate(-50%,-50%)";
+
+heart.style.fontSize="100px";
+
+
+document.body.appendChild(heart);
+
+
+
+setTimeout(()=>{
+
+
+alert("Peluk Virtual berhasil dikirim ke Dinda...🤗🩵");
+
+
+heart.remove();
+
+
+},1200);
+
+
+
+}
+
+
+
 </script>
 
-<h1>Hai Dinda ❤️</h1>
-<p>Aku sayang kamu.</p>
 
 </body>
+
 </html>
